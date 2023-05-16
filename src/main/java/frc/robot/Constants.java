@@ -86,15 +86,21 @@ public final class Constants {
         // Almost Sure: Determines the direction of sensing for the swerve encoders
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
-        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
+        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
 
         // Sure: Offset to basically make the drive wheels straight when the encoders read zero
+        // public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 1.808563348917171;//4.928680271476566;
+        // public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 5.81378718608658;//4.766078307960687;
+        // public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 5.456369662509226;//5.223204582750609;
+        // public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 2.0754760060092727;//2.339320701525603;
+
         public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 4.928680271476566;
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 4.766078307960687;
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 5.8045833013592665-Math.PI;
         public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 5.223204582750609;
         public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 2.339320701525603;
+
 
         // Maybe check:
         // public static final double kPhysicalMaxSpeedMetersPerSecond = 5*(2.0/0.25); // max speed, roughly 0.6 full speed, was 5, changing this didn't change anything it seemed, maybe slowed down the turning motors.
