@@ -11,11 +11,14 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.subsystems.ArmSubsystem;
+
 import java.util.HashMap;
 
 public final class Autos {
   private static HashMap<String, Command> eventMap = new HashMap<>();
   public static SwerveAutoBuilder autoBuilder;
+  // public static ArmSubsystem armSubsystem;
   public static final SendableChooser<Command> autoChooser = new SendableChooser<>();
 
   public static void init() {
@@ -29,9 +32,10 @@ public final class Autos {
         eventMap,
         true,
         RobotContainer.swerveSubsystem);
+    // armSubsystem = new ArmSubsystem();
 
     autoChooser.setDefaultOption("None", none());
-    autoChooser.addOption("Simple Test Path", new Auto_SimplePath(autoBuilder));
+    autoChooser.addOption("Simple Test Path", new Auto_SimplePath(autoBuilder, RobotContainer.armSubsystem));
     autoChooser.addOption("Auto_1A", new Auto_1A(autoBuilder));
     autoChooser.addOption("Auto_2A", new Auto_2A(autoBuilder));
     autoChooser.addOption("Auto_3A", new Auto_3A(autoBuilder));

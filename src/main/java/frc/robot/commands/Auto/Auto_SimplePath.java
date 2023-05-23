@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.commands.Arm.ArmCloseGrabberCmd;
-import frd.robot.subsystems.Arm;
+import frc.robot.subsystems.ArmSubsystem;
 
 public class Auto_SimplePath extends SequentialCommandGroup {
 
-    public Auto_SimplePath(SwerveAutoBuilder autoBuilder) {
+    public Auto_SimplePath(SwerveAutoBuilder autoBuilder, ArmSubsystem armSubsystem) {
         List<PathPlannerTrajectory> pathGroup =
             PathPlanner.loadPathGroup("SimplePathTest", new PathConstraints(
                 0.8 * Constants.AutoConstants.kMaxSpeedMetersPerSecond,
@@ -26,7 +26,10 @@ public class Auto_SimplePath extends SequentialCommandGroup {
             Commands.sequence(
                     autoBuilder.resetPose(pathGroup.get(0)),
                     autoBuilder.followPathWithEvents(pathGroup.get(0)),
-                    RobotContainer.armSubsystem.ArmCloseGrabberCmd));
+                    new ArmCloseGrabberCmd(armSubsystem,()->true)));
                     
         }
+    
+
+        
 }
