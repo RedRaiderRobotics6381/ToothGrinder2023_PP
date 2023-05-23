@@ -10,6 +10,9 @@ import com.pathplanner.lib.auto.SwerveAutoBuilder;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
+import frc.robot.commands.Arm.ArmCloseGrabberCmd;
+import frd.robot.subsystems.Arm;
 
 public class Auto_SimplePath extends SequentialCommandGroup {
 
@@ -22,6 +25,8 @@ public class Auto_SimplePath extends SequentialCommandGroup {
         addCommands(
             Commands.sequence(
                     autoBuilder.resetPose(pathGroup.get(0)),
-                    autoBuilder.followPathWithEvents(pathGroup.get(0))));
+                    autoBuilder.followPathWithEvents(pathGroup.get(0)),
+                    RobotContainer.armSubsystem.ArmCloseGrabberCmd));
+                    
         }
 }
